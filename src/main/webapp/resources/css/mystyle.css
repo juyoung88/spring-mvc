@@ -1,0 +1,516 @@
+@font-face {
+    font-family: NanumBarunGothic;
+    src: url(font/NanumBarunGothic.ttf);
+}
+.body-wrap {
+    width:100%;
+    height: 100%;
+    padding: 0;
+}
+body {
+    margin:0px;
+    overflow: auto;
+    overflow-y: scroll;
+    letter-spacing:0;
+    line-height:1.5;
+    font-size:15px;
+    color: #444;
+    font-weight:400;
+    font-family: NanumBarunGothic, Dotum, '돋음', sans-serif;
+}
+#header .main-header {
+    position: absolute;
+    left:0;
+    right:inherit;
+    top:80px;
+    width: 100%;
+    z-index:100;
+}
+#hdeader .no-bg {
+    background-color: rgba(0,0,0,.3);
+    border-bottom: 1px solid rgba(255,255,255,.2);
+}
+header#header {
+    top: 0!important;
+}
+#header {
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    min-width: 1100px;
+    height: 91px;
+    background: #fff;
+    border-bottom: 1px solid #351f67;
+}
+article, aside, figcaption, figure, footer, header, main, nav, section {
+    display: block;
+}
+#header .util-area .left-link {
+    position: absolute;
+    top: 15px;
+    left:0;
+    font-size: .8667em;
+}
+#header .util-area .right-link {
+    position: absolute;
+    top: 15px;
+    right:0;
+    font-size: .8667em;
+}
+#header .util-area .left-link a {
+    float: left;
+    margin-right: 20px;
+    vertical-align: top;
+}
+#header .util-area .right-link a {
+    display: block;
+    float: left;
+    margin-left: 20px;
+    vertical-align: top;
+}
+
+#header.no-bg .ci a {
+    display: block;
+    width: 140px;
+    height: 47px;
+    margin: 0;
+    padding: 0;
+    font-size:0;
+    line-height: 0;
+    background: url(https://img.megabox.co.kr/static/pc/images/common/ci/logo_new2.png) center center no-repeat;
+}
+#header .link-area {
+    position: relative;
+    width: 1100px;
+    margin: 0 auto;
+}
+a:link {
+    text-decoration: none;
+}
+a:visited {
+    color: #666;
+    text-decoration: none;
+    outline: 1px dotted #000;
+}
+a {
+    background-color: transparent;
+}
+* {
+    box-sizing: border-box;
+}
+div {
+    display: block;
+}
+#header.no-bg .util-area {
+    color: #888;
+}
+#header .util-area {
+    position: relative;
+    width: 1100px;
+    margin: 0 auto;
+    color: #666;
+}
+#header .ci {
+    position: absolute;
+    left: 50%;
+    top: 23px;
+    width: 140px;
+    height: 90px;
+    margin: 0 0 0 -70px;
+    padding: 0;
+}
+#header .link-area:after, #header .link-area::before {
+    content: '';
+    display: table;
+}
+/* #header.no-bg .link-area a.btn-layer-sitemap {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-sitemap.png);
+} */
+#header.no-bg .link-area a.btn-layer-search {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-search-white.png);
+}
+#header.no-bg .link-area a.link-ticket {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-schedule-white.png);
+}
+#header.no-bg .link-area a.btn-layer-mymega {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-mymega-white.png);
+}
+#header .link-area a.btn-layer-sitemap {
+    left:0;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-sitemap-white.png);
+}
+#header .link-area a.btn-layer-search {
+    left: 40px;
+}
+#header .link-area a.link-ticket {
+    right: 40px;
+}
+#header .link-area a {
+    display: block;
+    position: absolute;
+    top: 42px;
+    width: 36px;
+    height: 36px;
+    font-size:0;
+    line-height:0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+#header .link-area a.btn-layer-mymega {
+    right: 0;
+}
+#header .no-bg #gnb {
+    background-color: rgba(0,0,0,.2);
+}
+ol, ul {
+    list-style-type: none;
+    margin:0;
+    padding:0;
+}
+#gnb {
+    height:0;
+}
+#gnb>ul {
+    position: relative;
+    width: 1100px;
+    margin: 90px auto 0 auto;
+}
+
+
+ul {
+    display: block;
+    /* list-style-type: disc; */
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+#gnb .gnb-depth2 {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 44px;
+}
+ul ul {
+    list-style-type: circle;
+    margin-block-end: 0px;
+    margin-block-start: 0px;
+}
+#header .no-bg #gnb>ul>li:nth-child(1) .gnb-depth2 ul {
+    background-position: 0 0;
+}
+#gnb>ul>li:nth-child(1) .gnb-depth2 ul {
+    padding-left: 50px;
+}
+#header.no-bg #gnb>ul>li:nth-child(2) .gnb-depth2 ul {
+    background-position: 100px 0;
+}
+
+#gnb>ul>li:nth-child(2) .gnb-depth2 ul {
+    padding-left: 150px;
+}
+#header.no-bg #gnb>ul>li:nth-child(3) .gnb-depth2 ul {
+    background-position: 180px 0;
+}
+
+#gnb>ul>li:nth-child(3) .gnb-depth2 ul {
+    padding-left: 300px;
+}
+#header.no-bg #gnb>ul>li:nth-child(4) .gnb-depth2 ul {
+    background-position: 540px 0;
+}
+
+#gnb>ul>li:nth-child(4) .gnb-depth2 ul {
+    padding-left: 598px;
+}
+#header.no-bg #gnb>ul>li:nth-child(6) .gnb-depth2 ul {
+    background-position: 760px 0;
+}
+
+#gnb>ul>li:nth-child(6) .gnb-depth2 ul {
+    padding-left: 834px;
+}
+#gnb .gnb-depth2 ul {
+    overflow: hidden;
+    display: block;
+}
+#gnb ul li {
+    margin:0;
+}
+#gnb ul::after, #gnb ul::before {
+    content: '';
+    display: table;
+}
+.gnb-detail {
+    display:table;
+}
+#gnb ul:after {
+    clear: both;
+}
+#gnb ul:after, #gnb ul::before {
+    content: '';
+    display: table;
+}
+#header .no-bg #gnb>ul>li>a.gnb-txt-movie {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-movie-white.png);
+}
+#gnb>ul>li>a.gnb-txt-movie {
+    width: 30px;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-movie.png);
+}
+#gnb>ul>li>a.gnb-txt-reserve {
+    width: 30px;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-reserve.png);
+}
+#header.no-bg #gnb>ul>li>a.gnb-txt-reserve {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-reserve.png);
+}
+#header.no-bg #gnb>ul>li>a {
+    color: #fff;
+}
+
+#gnb>ul>li:nth-child(1)>a {
+    left: 166px;
+}
+#gnb>ul>li>a {
+    position: absolute;
+    top: -38px;
+    height: 38px;
+    text-indent: -9999px;
+    background-position: center 0;
+    background-repeat: no-repeat;
+}
+#header.no-bg #gnb>ul>li>a:after {
+    background-color: #fff;
+}
+#gnb>ul>li>a:after {
+    content: '';
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #339eb2;
+}
+
+#header.no-bg #gnb>ul>li>a {
+    color: #fff;
+}
+
+#header.no-bg #gnb>ul>li>a.gnb-txt-theater {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-theater.png);
+}
+#header.no-bg #gnb>ul>li>a {
+    color: #fff;
+}
+#gnb>ul>li>a.gnb-txt-theater {
+    width: 31px;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-theater.png);
+}
+#gnb>ul>li:nth-child(2)>a {
+    left: 256px;
+}
+#gnb>ul>li:nth-child(3)>a {
+    left: 345px;
+}
+#header.no-bg #gnb>ul>li>a.gnb-txt-event {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-event.png);
+}
+#header.no-bg #gnb>ul>li>a {
+    color: #fff;
+}
+#gnb>ul>li>a.gnb-txt-event {
+    width: 45px;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-event.png);
+}
+
+#gnb>ul>li:nth-child(4)>a {
+    right: 347px;
+}
+#header.no-bg #gnb>ul>li>a.gnb-txt-store {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-store.png);
+}
+#header.no-bg #gnb>ul>li>a {
+    color: #fff;
+}
+
+#gnb>ul>li>a.gnb-txt-store {
+    width: 44px;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-store.png);
+}
+#gnb>ul>li:nth-child(5)>a {
+    right: 241px;
+}
+#header.no-bg #gnb>ul>li>a.gnb-txt-benefit {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-benefit.png);
+}
+#header.no-bg #gnb>ul>li>a {
+    color: #fff;
+}
+#gnb>ul>li>a.gnb-txt-benefit {
+    width: 29px;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-benefit.png);
+}
+
+#gnb>ul>li:nth-child(6)>a {
+    right: 150px;
+}
+#gnb ul li a {
+    display: block;
+}
+.dropdown-content {
+    display: none;
+}
+#gnb>ul>li:nth-child(1):hover .dropdown-content {
+    display: block;
+}
+#gnb>ul>li:nth-child(2):hover .dropdown-content {
+    display: block;
+}
+#gnb>ul>li:nth-child(3):hover .dropdown-content {
+    display: block;
+}
+#gnb>ul>li:nth-child(4):hover .dropdown-content {
+    display: block;
+}
+#gnb>ul>li:nth-child(5):hover.dropdown-content {
+    display: block;
+}
+#gnb>ul>li:nth-child(6):hover .dropdown-content {
+    display: block;
+}
+ul.gnb-detail {
+    text-align: center;
+}
+ul.gnb-detail > li {
+    display: inline-block;
+    padding: 20px;
+}
+#header.no-bg #gnb>ul>li:nth-child(1) .dropdown-content ul {
+    background-position: 0 0;
+}
+#gnb>ul>li:nth-child(1) .dropdown-content ul {
+    padding-left: 0px;
+}
+#header.no-bg #gnb>ul>li:nth-child(2) .dropdown-content ul {
+    background-position: 100px 0;
+}
+#gnb>ul>li:nth-child(2) .dropdown-content ul {
+    padding-left: 60px;
+    /* margin-top: -10px; */
+
+}
+#gnb .gnb-depth2 ul {
+    overflow: hidden;
+    display: block;
+}
+#header.no-bg #gnb>ul>li:nth-child(3) .dropdown-content ul {
+    background-position: 180px 0;
+}
+
+#gnb>ul>li:nth-child(3) .dropdown-content ul {
+    padding-left: 250px;
+    /* margin-top: -20px; */
+}
+#header.no-bg #gnb>ul>li:nth-child(4) .dropdown-content ul {
+    background-position: 510px 0;
+}
+#gnb>ul>li:nth-child(4) .dropdown-content ul {
+    padding-left: 510px;
+    /* margin-top: -30px; */
+}
+#header.no-bg #gnb>ul>li:nth-child(6) .dropdown-content ul {
+    background-position: 650px 0;
+}
+
+#gnb>ul>li:nth-child(6) .dropdown-content ul {
+    padding-left: 760px;
+    /* margin-top: -50px; */
+}
+.main-container {
+    width:100%;
+    height:100%;
+}
+.main-container-img {
+    overflow:hidden;
+    position: absolute;
+    z-index:2;
+    width:100%;
+    height:800px;
+    margin:auto
+}
+.main-container-img img{
+    position:absolute;
+    display:block;
+    width:100%;
+    filter: blur(15px);
+}
+.main-container-img:before {
+    content:''; display:block; position:absolute; left:0; top:0; z-index:2; width:100%; height:100%;
+    background: -moz-linear-gradient(left, rgba(85,63,5,1) 0%, rgba(23,17,1,0) 50%, rgba(85,63,5,1) 100%);
+    background: -webkit-linear-gradient(left, rgba(85,63,5,1) 0%, rgba(23,17,1,0) 50%, rgba(85,63,5,1) 100%);
+    background: -o-linear-gradient(left, rgba(85,63,5,1) 0%, rgba(23,17,1,0) 50%, rgba(85,63,5,1) 100%);
+    background: -ms-linear-gradient(left, rgba(85,63,5,1) 0%, rgba(23,17,1,0) 50%, rgba(85,63,5,1) 100%);
+    background: linear-gradient(to right, rgba(85,63,5,1) 0%, rgba(23,17,1,0) 50%, rgba(85,63,5,1) 100%);
+}
+.main-container-img:after {
+    content:''; display:block; position:absolute; left:0; top:0; right:0; bottom:0; z-index:2;
+    background-color:rgba(3,1,21,0.7)
+}
+.main-block {
+    position:relative;
+    z-index: 3;
+    width:1100px;
+    height:800px;
+    margin:auto;
+}
+.movie-list-container {
+    padding-top: 80px;
+    padding-left:21px;
+}
+.main-container-img-pattern {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    background: url(https://www.megabox.co.kr/static/pc/images/movie/bg-movie-detail-pattern.png) repeat 0 0;
+}
+.movie-list-title {
+    text-align: center;
+    text-decoration: underline;
+    font-size:1.0667em;
+    margin-bottom:30px;
+    color:gray;
+}
+.movie-list-item-img {
+    width: 245px;
+    height: 352px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.movie-list-item {
+    margin-right: 26px;
+}
+.movie-list-item:hover .movie-list-item-img {
+    transform: scale(1.1);
+    transition:all 0.5s ease-in-out;
+}
+.movie-list {
+    display:flex;
+}
+.btn {
+    width:100%;
+    color:#fff;
+    height:36px;
+    cursor: pointer;
+    text-align:center;
+    border-radius: 4px;
+    border-style: none;
+    background:#037b94;
+}
