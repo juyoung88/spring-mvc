@@ -10,11 +10,11 @@
     </select>
 
     <insert id="insertUser" parameterType="User">
-        insert into users values(null,#{name},#{phone_num},#{username},#{password},#{email})
+        insert into users values(null,#{name},#{phone_num},#{username},#{password},#{email},#{photo})
     </insert>
 
     <update id="updateUser" parameterType="User">
-        update users set name=#{name}, phone_num=#{phone_num}, username=#{username}, password=#{password}, email=#{email} where id=#{id}
+        update users set name=#{name}, phone_num=#{phone_num}, username=#{username}, password=#{password}, email=#{email},photo=#{photo} where id=#{id}
     </update>
 
     <delete id="deleteUser" parameterType="int">

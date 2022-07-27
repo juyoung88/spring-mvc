@@ -66,3 +66,6 @@ tr {
     border-style: none;
     background: red;
 }
+img {
+    border-radius: 50%;
+}

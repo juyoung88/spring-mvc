@@ -8,12 +8,17 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -32,7 +37,23 @@ public class UserController {
         return "joinForm";
     }
     @PostMapping("/save")
-    public String save(@ModelAttribute("user") User user) {
+    public String save(@ModelAttribute("user") User user, @RequestParam("file_upload") CommonsMultipartFile file, HttpSession s) {
+        byte[] data = file.getBytes();
+        String filePath = s.getServletContext().getRealPath("/")
+                + "resources" + File.separator
+                + "image" + File.separator + file.getOriginalFilename();
+
+        try {
+            FileOutputStream fileout = null;
+            fileout = new FileOutputStream(filePath);
+            fileout.write(data);
+            fileout.close();
+            user.setPhoto(file.getOriginalFilename());
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         dao.insert(user);
         return "redirect:/viewusers";
     }
