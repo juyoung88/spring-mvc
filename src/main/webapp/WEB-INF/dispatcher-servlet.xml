@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:beans="http://www.springframework.org/schema/p"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-    <context:component-scan base-package="com.spring.crud.controllers"/>
+    <context:component-scan base-package="com.spring.crud"/>
     <!-- the mvc resources tag does the magic -->
     <mvc:resources mapping="/resources/**" location="/resources/" />
     <mvc:annotation-driven/>
@@ -34,6 +34,7 @@
     <bean id="dao" class="com.spring.crud.dao.UserDao">
         <property name="session" ref="sqlSessionTemplate"></property>
     </bean>
+
     <bean id="dataSource"
           class="org.apache.commons.dbcp2.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -50,5 +51,16 @@
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/adminLogin"/>
+            <mvc:mapping path="/afterLogin"/>
+            <mvc:exclude-mapping path="popup"/>
+<!--            <mvc:exclude-mapping path="/resources/image/**"/>-->
+            <!--            새로운 crud 페이지 추가-->
+            <bean id="LoginInterceptor" class="com.spring.crud.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+
+    </mvc:interceptors>
 
 </beans>

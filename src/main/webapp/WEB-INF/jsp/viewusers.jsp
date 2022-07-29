@@ -13,11 +13,12 @@
 <body>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" href="<c:url value="/resources/css/list.css"/>"/>
+<link rel="stylesheet" href="<c:url value="/resources/css/list.css"/>" type="text/css"/>
 <h1>회원목록</h1>
 <div class="table-container">
     <table class="table">
         <tr class="col-names">
+            <th>Photo</th>
             <th>Id</th>
             <th>Name</th>
             <th>Phone Number</th>
@@ -27,18 +28,17 @@
         </tr>
         <c:forEach items="${list}" var="u">
             <tr>
+                <td><img src="<c:url value="/resources/image/${u.getPhoto()}"/>" width="30px" height="30px"/>
                 <td>${u.getId()}</td>
                 <td>${u.getName()}</td>
                 <td>${u.getPhone_num()}</td>
                 <td>${u.getUsername()}</td>
                 <td>${u.getPassword()}</td>
                 <td>${u.getEmail()}</td>
-                <td><a class="edit-btn" href="edit/${u.getId()}">수정</a></td>
                 <td><a class="del-btn" href="deleteuser/${u.getId()}">삭제</a></td>
             </tr>
         </c:forEach>
     </table>
-    <a class="join-btn" href="join">새로운 회원등록</a>
 </div>
 </body>
 </html>

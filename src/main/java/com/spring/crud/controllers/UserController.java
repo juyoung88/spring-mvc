@@ -22,15 +22,56 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class UserController {
 
     @Autowired
-    private SqlSessionFactory sqlFactory;
-    @Autowired
     UserDao dao;
 
+    @GetMapping("popup")
+    public String popup() {
+        return "popup";
+    }
+    @PostMapping("login")
+    public String login(HttpSession session, User user) {
+//        if(Objects.equals(user.getUsername(), "admin"))
+//            return "redirect:/adminLogin";
+        String returnURL="";
+        if(session.getAttribute("login")!=null)
+            session.removeAttribute("login");
+        User loginUser= dao.getUser(user);
+        if(loginUser!=null) {
+            session.setAttribute("login",loginUser);
+            if(Objects.equals(loginUser.getUsername(),"admin"))
+                return "redirect:/adminLogin";
+            returnURL="redirect:/afterLogin";
+        }
+        else {
+            System.out.println("loginUser = " + loginUser);
+            System.out.println("로그인 실패");
+            returnURL="redirect:/popup";
+        }
+        return returnURL;
+    }
+    @GetMapping("/adminLogin")
+    public String adminLogin() {
+        return "/admin-login";
+    }
+    @GetMapping("afterLogin")
+    public String afterLogin(HttpSession session, Model model) {
+        Object obj = session.getAttribute("login");
+        User user = (User)obj;
+        model.addAttribute("loginUser",user);
+        return "after-login";
+    }
+    @GetMapping("logout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("login");
+        session.invalidate();
+        return "redirect:/popup";
+    }
     @GetMapping("/join")
     public String join(Model model) {
         model.addAttribute("command",new User());
@@ -54,18 +95,12 @@ public class UserController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        System.out.println("user = " + user);
         dao.insert(user);
-        return "redirect:/viewusers";
+        return "redirect:/";
     }
-    @GetMapping("/viewusers")
+    @GetMapping("adminLogin/viewusers")
     public String viewUsers(Model m) {
-        Connection con= null;
-        try {
-            SqlSession session = sqlFactory.openSession();
-            System.out.println("성공 : " + session);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
         List<User> list = dao.selectAll();
         m.addAttribute("list",list);
         return "viewusers";
@@ -77,14 +112,14 @@ public class UserController {
         return "editForm";
     }
     @PostMapping("/edit/edituser")
-    public String editUser(@ModelAttribute("user") User user) {
+    public String editUser(@ModelAttribute("loginUser") User user) {
         dao.update(user);
-        return "redirect:/viewusers";
+        return "redirect:/afterLogin";
     }
-    @GetMapping("/deleteuser/{id}")
+    @GetMapping("adminLogin/deleteuser/{id}")
     public String deleteUser(@PathVariable int id) {
         dao.deleteUser(id);
-        return "redirect:/viewusers";
+        return "redirect:/adminLogin/viewusers";
     }
 
 

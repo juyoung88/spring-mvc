@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<c:url value="/resources/css/mystyle.css"/>"/>
+    <link rel="stylesheet" href="<c:url value="/resources/css/mystyle.css"/>" type="text/css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>MEET PLAY SHARE, 메가박스</title>
 </head>
@@ -23,9 +23,8 @@
 
         </div>
         <div class="right-link">
-            <a href="/popup.html" target="popup" onclick="window.open('popup.html','popup','width=600px, height=600px'); return false;" title="로그인">로그인</a>
+            <a href="popup" target="popup" title="로그인">로그인</a>
             <a href="join" title="회원가입">회원가입</a>
-            <a href="viewusers" title="빠른예메">회원목록 조회</a>
         </div>
     </div>
     <div class="link-area">

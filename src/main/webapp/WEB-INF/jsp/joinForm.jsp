@@ -8,17 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEET PLAY SHARE, 메가박스</title>
-    <link href="<c:url value="/resources/css/join.css"/>" rel="stylesheet">
-    <link rel="stylesheet" href="<c:url value="/resources/css/mystyle.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/css/join.css"/>" type="text/css">
+    <link rel="stylesheet" href="<c:url value="/resources/css/mystyle.css"/>" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-<%--<div id="navbar"></div>--%>
-<%--<script>--%>
-<%--    $(function() {--%>
-<%--        $("#navbar").load("<c:url value="/resources/navbar.html"/>");--%>
-<%--    });--%>
-<%--</script>--%>
 <header id = "header"  class = "main-header no-bg">
     <h1 class="ci">
         <a href="/" title = "MEGABOX 메인으로 가기">MEGABOX : Life Theater</a>
@@ -31,9 +25,8 @@
 
         </div>
         <div class="right-link">
-            <a href="/popup.html" target="popup" onclick="window.open('popup.html','popup','width=600px, height=600px'); return false;" title="로그인">로그인</a>
+            <a href="popup" title="로그인">로그인</a>
             <a href="join" title="회원가입">회원가입</a>
-            <a href="viewusers" title="빠른예메">회원목록 조회</a>
         </div>
     </div>
     <div class="link-area">
@@ -127,7 +120,7 @@
 <div class="join-container">
     <div class="join-block">
         <div class="text">회원가입</div>
-        <form action="save" method="post">
+        <form name="join" action="save" method="post" enctype="multipart/form-data">
             <div class="logo">
                 <img src="https://img.megabox.co.kr/static/pc/images/common/ci/logo_new2.png">
             </div>
@@ -141,18 +134,50 @@
                 <input type="text" name="username" placeholder="ID">
             </div>
             <div class="data">
-                <input type="password" name="password" placeholder="비밀번호">
+                <input type="password" id="password" name="password" placeholder="비밀번호">
+                <br/><span id="message"></span>
             </div>
             <div class="data">
-                <input type="password" name="password_check" placeholder="비밀번호 확인">
+                <input type="password" id="password_check" name="password_check" placeholder="비밀번호 확인">
             </div>
             <div class="data">
                 <input type="text" name="email" placeholder="이메일">
+            </div>
+            <div class="data">
+                <img id="lol" src="<c:url value="/resources/image/default.png"/>" width="100px"; height="100px"/>
+            </div>
+            <div class="data">
+                <input type="file" name="file_upload" placeholder="" id="preview">
             </div>
             <div class="btn">
                 <input type="submit" class="submit-btn" value="회원가입">
             </div>
         </form>
+        <script>
+            $('#password'), $('#password_check').on('keyup', function() {
+                if($('#password').val()==$('#password_check').val()) {
+                    $('#message').html('비밀번호가 일치합니다').css('color','green');
+                }
+                else {
+                    $('#message').html('비밀번호가 틀립니다').css('color','red');
+                }
+            });
+        </script>
+        <script>
+            function imgpreview(input) {
+               if(input.files && input.files[0]) {
+                   var reader = new FileReader();
+                   reader.onload = function(e) {
+                       $('#lol').attr('src', e.target.result);
+                   }
+                   reader.readAsDataURL(input.files[0]);
+               }
+            }
+            $('#preview').change(function() {
+                imgpreview(this);
+            });
+        </script>
+
     </div>
 </div>
 </body>

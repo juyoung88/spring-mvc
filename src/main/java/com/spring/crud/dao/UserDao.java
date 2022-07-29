@@ -26,6 +26,10 @@ public class UserDao {
         User user = session.selectOne("userDB.selectUserById",id);
         return user;
     }
+    public User getUser(User user) {
+        User currUser = session.selectOne("userDB.getUser",user);
+        return currUser;
+    }
     public List<User> selectAll() {
         List<User> list = session.selectList("userDB.selectUserAll");
         return list;

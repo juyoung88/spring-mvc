@@ -47,3 +47,6 @@ form {
     width:100%;
     text-align: center;
 }
+#message {
+    margin-top:-10px;
+}
